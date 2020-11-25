@@ -1,0 +1,28 @@
+{
+    "name": "ccicourageapp",
+    "version": "1.0.0",
+    "engines": {
+        "node": "12.16.2"
+    },
+    "description": "Demonstration App.",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "test": "jest --forceExit --coverage --verbose"
+    },
+    "author": "Masahiko Funaki",
+    "dependencies": {
+        "ejs": "^3.0.2",
+        "express": "^4.17.1"
+    },
+    "devDevendencies": {
+        "jest": "^25.3.0",
+        "supertest": "^4.0.2"
+    },
+    "jest": {
+        "testEnvironment": "node",
+        "coveragePathIgnorePatterns": [
+            "/node_modules/"
+        ]
+    }
+}
