@@ -12,8 +12,12 @@ workflows:
           requires:
             - build
       - deploy:
+          filters:
+            branches:
+              only:
+                - main
           requires:
-            - build-and-test
+            - test
 
 jobs:
   build:
@@ -21,9 +25,9 @@ jobs:
       name: node/default
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
+      - node/install-packages:
+          cache-path: ~/project/node_modules
+          override-ci-command: npm install
   test:
     executor:
       name: node/default
