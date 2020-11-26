@@ -11,7 +11,7 @@ describe('Simple Web App', () => {
         request(app)
             .get('/next')
             .expect(200)
-            .expect("Thank you.")
+            .expect("Thank you very much.")
             .end((err) => {
                 if (err) return done(err);
                 done();
