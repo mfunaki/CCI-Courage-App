@@ -12,15 +12,12 @@ workflows:
           requires:
             - build
       - deploy:
-          filters:
-            branches:
-              only:
-                - main
           requires:
             - test
 
 jobs:
   build:
+    name: Build
     executor:
       name: node/default
     steps:
@@ -29,6 +26,7 @@ jobs:
           cache-path: ~/project/node_modules
           override-ci-command: npm install
   test:
+    name: Test
     executor:
       name: node/default
     steps:
@@ -37,9 +35,11 @@ jobs:
       - run:
           command: npm run test    
   deploy:
+    name: Deploy
     executor:
       name: heroku/default
     steps:
       - checkout
       - heroku/install
-      - heroku/deploy-via-git
+      - heroku/deploy-via-git:
+          only-branch: main
