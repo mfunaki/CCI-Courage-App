@@ -7,17 +7,19 @@ orbs:
 workflows:
   build-deploy:
     jobs:
-      - build
+      - build:
+          name: Build
       - test:
+          name: Test
           requires:
             - build
       - deploy:
+          name: Deploy
           requires:
             - test
 
 jobs:
   build:
-    name: Build
     executor:
       name: node/default
     steps:
@@ -26,7 +28,6 @@ jobs:
           cache-path: ~/project/node_modules
           override-ci-command: npm install
   test:
-    name: Test
     executor:
       name: node/default
     steps:
@@ -35,7 +36,6 @@ jobs:
       - run:
           command: npm run test    
   deploy:
-    name: Deploy
     executor:
       name: heroku/default
     steps:
