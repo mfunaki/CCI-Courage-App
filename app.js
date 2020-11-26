@@ -13,7 +13,7 @@ app.get('/', function(req, res){
 app.get('/next', function(req, res){
     res.statusCode = 200;
     res.setHeader("Content-Type", 'text/plain');
-    res.end('Thank you.');
+    res.end('Thank you very much.');
 });
 
 console.log(`Listening on port ${ PORT }.`);
