@@ -7,14 +7,11 @@ orbs:
 workflows:
   build-deploy:
     jobs:
-      - build:
-          name: Build
+      - build
       - test:
-          name: Test
           requires:
             - build
       - deploy:
-          name: Deploy
           requires:
             - test
 
