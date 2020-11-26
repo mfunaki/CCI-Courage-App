@@ -41,6 +41,4 @@ jobs:
     steps:
       - checkout
       - heroku/install
-      - heroku/deploy-via-git:
-          only-branch: main
-
+      - heroku/deploy-via-git
